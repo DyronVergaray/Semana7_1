@@ -5,6 +5,8 @@ interface Estudiante {
  nombre: string;
  creditos: number;
  edad: number;
+ nota1: number;
+ nota2: number;
 }
 @Component({
  selector: 'app-root',
@@ -15,9 +17,9 @@ interface Estudiante {
 export class App {
  titulo = 'Mini-LMS · Lista de estudiantes';
  estudiantes: Estudiante[] = [
- { nombre: 'María Torres', creditos: 18, edad: 20 },
- { nombre: 'Luis Pérez', creditos: 8, edad: 13 },
- { nombre: 'Ana Ruiz', creditos: 14, edad: 15 }
+ { nombre: 'María Torres', creditos: 18, edad: 20, nota1: 10, nota2: 15 },
+ { nombre: 'Luis Pérez', creditos: 8, edad: 13, nota1: 8, nota2: 2 },
+ { nombre: 'Ana Ruiz', creditos: 14, edad: 15, nota1: 15, nota2: 20 }
  ];
  
  estado(creditos: number): string {
@@ -34,6 +36,14 @@ export class App {
     return 'Adulto';
   } else {
     return 'Menor';
+  }
+ }
+
+ aprobado(nota1:number,nota2:number): string{
+  if((nota1+nota2)/2 > 11){
+    return 'Aprobado';
+  } else {
+    return 'Desaprobado';
   }
  }
 }

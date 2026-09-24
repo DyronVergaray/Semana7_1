@@ -8,6 +8,10 @@
  <th>Estado</th>
  <th>Edad</th>
  <th>Validar</th>
+ <th>Nota 1</th>
+ <th>Nota 2</th>
+ <th>Promedio</th>
+ <th>Estado</th>
  </tr>
  </thead>
  <tbody>
@@ -41,7 +45,21 @@ el estado -->
  {{ validar(e.edad) }}
  </span>
  </td>
+
+ <td>{{ e.nota1 }}</td>
+
+ <td>{{ e.nota2 }}</td>
+
+ <td>{{ (e.nota1 + e.nota2) / 2 }}</td>
   
+ <td>
+ <span class="badge"
+ [class.bg-success]="aprobado(e.nota1,e.nota2) === 'Aprobado'"
+ [class.bg-danger]="aprobado(e.nota1,e.nota2) !==
+'Aprobado'">
+ {{ aprobado(e.nota1,e.nota2) }}
+ </span>
+ </td>
   
  </tr>
  </tbody>
