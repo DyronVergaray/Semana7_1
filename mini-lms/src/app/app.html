@@ -1,0 +1,49 @@
+<div class="container mt-4">
+ <h1 class="mb-3">{{ titulo }}</h1>
+ <table class="table table-striped">
+ <thead>
+ <tr>
+ <th>Nombre</th>
+ <th>Créditos</th>
+ <th>Estado</th>
+ <th>Edad</th>
+ <th>Validar</th>
+ </tr>
+ </thead>
+ <tbody>
+ <!-- *ngFor: directiva estructural que repite una fila por estudiante
+-->
+ <tr *ngFor="let e of estudiantes">
+  
+ <td>{{ e.nombre }}</td>
+ <td>{{ e.creditos }}</td>
+ 
+ <!-- [class...]: directiva de atributo que cambia el estilo según
+el estado -->
+ <td>
+ <span class="badge"
+ [class.bg-success]="estado(e.creditos) === 'Matriculado'"
+ [class.bg-secondary]="estado(e.creditos) !==
+'Matriculado'">
+ {{ estado(e.creditos) }}
+ </span>
+ </td>
+ 
+ <!-- Para insertar la edad -->
+ <td>{{ e.edad }}</td>
+ 
+ <!-- Para la validación -->
+ <td>
+ <span class="badge"
+ [class.bg-dark]="validar(e.edad) === 'Adulto'"
+ [class.bg-danger]="validar(e.edad) !==
+'Adulto'">
+ {{ validar(e.edad) }}
+ </span>
+ </td>
+  
+  
+ </tr>
+ </tbody>
+ </table>
+</div>
